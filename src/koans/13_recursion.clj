@@ -3,21 +3,25 @@
 
 (defn is-even? [n]
   (if (= n 0)
-    __
-    (___ (is-even? (dec n)))))
+    true
+    (not (is-even? (dec n)))))
 
 (defn is-even-bigint? [n]
   (loop [n   n
          acc true]
     (if (= n 0)
-      __
+      acc
       (recur (dec n) (not acc)))))
 
 (defn recursive-reverse [coll]
-  __)
+  (if (empty? coll)
+    '()
+    (let [coll1 (recursive-reverse (rest coll))]
+      (concat coll1 (list (first coll))))))
 
 (defn factorial [n]
-  __)
+  ;; ok let me say this again: I HATE EXCLUSIVE INDICES
+  ((comp (partial reduce * 1N) #(range 2 %) inc) n))
 
 (meditations
   "Recursion ends with a base case"
